@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="url 'main_page'">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="url 'connection:ShowConnections'">Connections</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="url 'report:ShowReports' ">Reports</a>
+                </li>
+                 if request.user.is_authenticated
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Hi,  request.user.username !</a>
+                            if request.user.is_superuser
+                                <a class="dropdown-item" href="url 'admin:index'">Admin Panel</a>
+                            endif
+                            <a class="dropdown-item" href="url 'account:AccountUpdate' user_id=request.user.id ">Configurations</a>
+                            <a class="dropdown-item" href=" url 'logout' ">Logout</a>
+                        </div>
+                    </li>
+                 else
+                    <li class="nav-item">
+                        <a class="nav-link" href="url 'login' ">Login</a>
+                    </li>
+                 endif
+            </ul>
+        </div>
+    </div>
+</nav>
+
+     block content
+     endblock
+
+<footer>
+    <div style="text-align: center">
+        <br><br>
+        <a href="url 'report:PrivacyPolicy'">Privacy Policy</a>
+    </div>
+</footer>
