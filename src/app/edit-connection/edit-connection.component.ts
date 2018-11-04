@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditConnectionComponent implements OnInit {
 
+  connection = {id: 1, hashTag: 'tag', twitterLink: 'some link', facebookLink: 'some link', dayOfWeek: 'Monday', typeOfReport: 'Number'};
   constructor() { }
 
   ngOnInit() {

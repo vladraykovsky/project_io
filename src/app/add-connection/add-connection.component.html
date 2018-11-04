@@ -1,30 +1,59 @@
-<div id="addConnectionModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
+<div id="addConnectionModal">
+		<div class="container">
+			<div >
 				<form name="AddForm" method="POST" class="post-form">
-					<div class="modal-header">
-						<h4 class="modal-title">Add Connection</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<div class="header">
+					<h5 class="title">Add Connection</h5>
 					</div>
-					<div class="modal-body">
+					<div class="body">
                         <div class="alert alert-error">
-                             for field in add_form
-                                <label> field.label </label><br>
-                                 field
-                                 if field.errors
-                                    <div class="col-sm-20">
-                                        <small class="text-danger"> field.errors|striptags </small><br>
-                                    </div>
-                                 else
-                                    <br>
-                                 endif
-                                <br>
-                             endfor
+                                 <div class="form-group row">
+                                     <label for="tag" class="col-sm-2 col-form-label">Tag name</label>
+                                     <div class="col-sm-10">
+                                     <input  [(ngModel)]="connection.hashTag" name="tag" type="text" class="form-control" id="tag" aria-describedby="emailHelp" placeholder="Enter tag name">
+                                     </div>
+                                 </div>
+                                 <div class="form-group row">
+                                     <label for="dayOfWeek" class="col-sm-2 col-form-label">Day of Week</label>
+                                     <div class="col-sm-10">
+                                     <select class="form-control" id="dayOfWeek" [(ngModel)]="connection.dayOfWeek" name="dayOfWeek">
+                                           <option [ngValue]="Monday">Monday</option>
+                                           <option [ngValue]="Tuesday">Tuesday</option>
+                                           <option [ngValue]="Wednesday">Wednesday</option>
+                                           <option [ngValue]="Thursday">Thursday</option>
+                                           <option [ngValue]="Friday">Friday</option>
+                                           <option [ngValue]="Saturday">Saturday</option>
+                                           <option [ngValue]="Sunday">Sunday</option>
+                                     </select>
+                                     </div>
+                                 </div>
+                                 <div class="form-group row">
+                                     <label for="typeOfReport" class="col-sm-2 col-form-label">Type of report</label>
+                                     <div class="col-sm-10">
+                                     <select class="form-control" id="typeOfReport" [(ngModel)]="connection.typeOfReport" name="typeOfReport">
+                                          <option [ngValue]="Simple">Simple</option>
+                                          <option [ngValue]="Number">Number</option>
+                                          <option [ngValue]="Full">Full</option>
+                                     </select>
+                                     </div>
+                                 </div>
+                                 <div class="form-group row">
+                                     <label for="facebookLink" class="col-sm-2 col-form-label">Facebook link</label>
+                                     <div class="col-sm-10">
+                                     <input  [(ngModel)]="connection.facebookLink" name="facebookLink" type="text" class="form-control" id="facebookLink" aria-describedby="emailHelp" placeholder="Enter tag name">
+                                     </div>
+                                 </div>
+                                 <div class="form-group row">
+                                     <label for="twitterLink" class="col-sm-2 col-form-label">Twitter link</label>
+                                     <div class="col-sm-10">
+                                     <input  [(ngModel)]="connection.twitterLink" name="twitterLink" type="text" class="form-control" id="twitterLink" aria-describedby="emailHelp" placeholder="Enter tag name">
+                                     </div>
+                                 </div>
                         </div>
 					</div>
 					<div class="modal-footer">
-                        <a href="% url 'connection:ShowConnections' %" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
-                        <button id="submit" name="submit" class="btn btn-primary" value="1">Add</button>
+          <a routerLink="/connectios" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+          <button id="submit" name="submit" class="btn btn-primary" value="1">Add</button>
 					</div>
 				</form>
 			</div>

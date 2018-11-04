@@ -8,44 +8,38 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="url 'main_page'">Main</a>
+                    <a class="nav-link" routerLink="/" >Main</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="url 'connection:ShowConnections'">Connections</a>
+                    <a class="nav-link" routerLink="/connections">Connections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="url 'report:ShowReports' ">Reports</a>
+                    <a class="nav-link" href="/reports">Reports</a>
                 </li>
-                 if request.user.is_authenticated
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Hi,  request.user.username !</a>
-                            if request.user.is_superuser
-                                <a class="dropdown-item" href="url 'admin:index'">Admin Panel</a>
-                            endif
-                            <a class="dropdown-item" href="url 'account:AccountUpdate' user_id=request.user.id ">Configurations</a>
-                            <a class="dropdown-item" href=" url 'logout' ">Logout</a>
+                                <a class="dropdown-item" href="/admin">Admin Panel</a>
+                            <a class="dropdown-item" href="">Configurations</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
                         </div>
                     </li>
-                 else
-                    <li class="nav-item">
-                        <a class="nav-link" href="url 'login' ">Login</a>
-                    </li>
-                 endif
+                <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<router-outlet></router-outlet>
 
-     block content
-     endblock
 
-<footer>
+<!-- <footer>
     <div style="text-align: center">
         <br><br>
         <a href="url 'report:PrivacyPolicy'">Privacy Policy</a>
     </div>
-</footer>
+</footer>  -->

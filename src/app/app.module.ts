@@ -11,6 +11,23 @@ import { AccountUpdateComponent } from './account-update/account-update.componen
 import { ReportComponent } from './report/report.component';
 import { AddReportComponent } from './add-report/add-report.component';
 import { ApplicationHeaderComponent } from './application-header/application-header.component';
+import {RouterModule, Routes} from '@angular/router';
+import { DescriptionComponent } from './description/description.component';
+import {FormsModule} from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
+const appRoutes: Routes = [
+  {path: '', component: ApplicationHeaderComponent, children: [
+      {path: '' , component: DescriptionComponent },
+      {path: 'connections', component: ManageConnectionsComponent},
+      {path: 'reports', component: ReportComponent},
+
+      {path: 'connections/add', component: AddConnectionComponent},
+      {path: 'connections/:id/edit', component: EditConnectionComponent}
+    ]}
+
+];
 
 @NgModule({
   declarations: [
@@ -23,10 +40,14 @@ import { ApplicationHeaderComponent } from './application-header/application-hea
     AccountUpdateComponent,
     ReportComponent,
     AddReportComponent,
-    ApplicationHeaderComponent
+    ApplicationHeaderComponent,
+    DescriptionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FontAwesomeModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes )
   ],
   providers: [],
   bootstrap: [AppComponent]
