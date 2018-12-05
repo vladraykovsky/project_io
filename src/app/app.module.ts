@@ -16,6 +16,7 @@ import { DescriptionComponent } from './description/description.component';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 const appRoutes: Routes = [
   {path: '', component: ApplicationHeaderComponent, children: [
@@ -24,7 +25,9 @@ const appRoutes: Routes = [
       {path: 'reports', component: ReportComponent},
 
       {path: 'connections/add', component: AddConnectionComponent},
-      {path: 'connections/:id/edit', component: EditConnectionComponent}
+      {path: 'connections/:id/edit', component: EditConnectionComponent},
+      {path: 'account', component: AccountUpdateComponent},
+      {path: 'login', component: LoginComponent}
     ]}
 
 ];
@@ -47,9 +50,11 @@ const appRoutes: Routes = [
     BrowserModule,
     FontAwesomeModule,
     FormsModule,
+    MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(appRoutes )
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

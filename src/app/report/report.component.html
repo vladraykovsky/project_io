@@ -7,13 +7,37 @@
 				            		<h2>Manage <b>Reports</b></h2>
 					          </div>
                     <div class="col-sm-6">
-						              <a href="#addReportsModal" class="btn btn-success float-right" data-toggle="modal">
+						              <a class="btn btn-success float-right" data-toggle="modal">
                             <i class="material-icons">&#xE147;</i>
-                            <span>Custom Date Range</span>
+                            <span (click)="basicModalDate.show()">Custom Date Range</span>
                           </a>
 					          </div>
                 </div>
             </div>
+
+           <div mdbModal #basicModalDate="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                 <div class="modal-header">
+                  <h4 class="modal-title w-100" id="myModalLabel">Create report with custom date range</h4>
+                       <div class="modal-body">
+                <div class="input-group date" data-provide="datepicker">
+                    <input class="datepicker" data-date-format="mm/dd/yyyy" type="date" class="form-control">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+
+                       </div>
+                 </div>
+                 <div class="modal-footer">
+                 <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModalDate.hide()" mdbWavesEffect>OK</button>
+                 <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModalDate.hide()" mdbWavesEffect >Cancle</button>
+                 </div>
+                 </div>
+                 </div>
+            </div>
+
             <div class="column" id="centerColumn" align="center">
             <h4> {{currentDate | date: 'longDate'}} </h4></div>
             <div class="collumn" id="centerColumn" align="center">
@@ -29,57 +53,60 @@
                 <br><br>
                 <a href="url 'report:DeleteAllReports'" class="btn btn-outline-danger">DELETE all reports</a>
 
-                if all_reports
+
                     <br><br>
                     <table class="table table-striped table-hover" id="connection_list_table">
                         <thead>
                             <tr>
-                                <th>Назва звіту</th>
-                                <th>Ім'я користувача</th>
-                                <th>Звіт</th>
-                                <th>Дія</th>
+                                <th scope="col">Назва звіту</th>
+                                <th scope="col">Ім'я користувача</th>
+                                <th scope="col">Звіт</th>
+                                <th scope="col">Дія</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr *ngFor="let report of reports;let i = index ">
 
-                        for report in all_reports
-                            <tr>
-                                <td>report.name</td>
-                                <td>report.user.username </td>
-                                <td>
-                                    <a href="url 'report:DownloadReport' filename=report.name ">
+                                <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{report.name}}</th>
+                                <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{report.username}}</td>
+                                <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+                                    <a href="">
                                         Download Report
                                     </a>
                                 </td>
-                                <td>
-                                    <a href="#deleteReportreport.id" class="report" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+                                    <span  class="connection pr-2" style="cursor: pointer" (click)="basicModal.show()">
+                                                                            <fa-icon [icon]="faTrashAlt"></fa-icon>
+                                    </span>
                                 </td>
+                              <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                                               <div class="modal-dialog" role="document">
+                                                 <div class="modal-content">
+                                                   <div class="modal-header">
+                                                     <h4 class="modal-title w-100" id="myModalLabel">Do you want to remove report ?</h4>
+                                                   </div>
+                                                   <div class="modal-footer">
+                                                     <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="removeReport(report,basicModal)" mdbWavesEffect>OK</button>
+                                                     <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.hide()" mdbWavesEffect >Cancle</button>
+                                                   </div>
+                                                 </div>
+                                               </div>
+                              </div>
                             </tr>
-                            <!-- Delete Modal HTML -->
-                            <div id="deleteReportreport.id" class="modal fade">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <form>
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Delete Report</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Are you sure you want to delete this Report? report.hash_tag</p>
-                                                <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                <a href="url 'report:DeleteReport' report_id=report.id " class="btn btn-danger" role="button">Delete</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                         endfor
                         </tbody>
+                        <tfoot class="grey lighten-5 w-100">
+
+                            <tr>
+                              <td colspan="4">
+                                <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+                                </mdb-table-pagination>
+                              </td>
+                            </tr>
+
+                          </tfoot>
                     </table>
-			        <div class="clearfix">
+
+			        <div class="clearfix" *ngIf="reports.length > 22">
                         <div class="hint-text">Showing <b> all_reports.end_index|subtract_indexes:all_reports.start_index </b> out of <b> all_reports.paginator.count </b> entries</div>
                         <ul class="pagination">
                             if all_reports.has_previous
@@ -108,14 +135,9 @@
                         </ul>
                     </div>
 
-                 else
-                    <div class="column" id="centerColumn" align="center"><br>There is no Reports yet!<br><br></div>
-                 endif
+                    <div class="column" id="centerColumn" align="center" *ngIf="reports.length === 0"><br>There is no Reports yet!<br><br></div>
+
             </div>
         </div>
     </div>
-
-
-
-include report/add_reports_with_custom_range_modal.html
 

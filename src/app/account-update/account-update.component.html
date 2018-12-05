@@ -7,59 +7,30 @@
             </div>
             <br>
             <div class="modal-body">
-                 if login_to_twitter_error != 'None'
-                    <h6 style="color: darkred">login_to_twitter_error</h6>
-                 endif
+                 <div class="form-group row">
+                     <label for="tag" class="col-sm-2 col-form-label">Username:</label>
+                     <div class="col-sm-10">
+                     <input  [(ngModel)]="user.username" name="tag" type="text" class="form-control" id="tag" aria-describedby="emailHelp" placeholder="Enter username">
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <label for="tag" class="col-sm-2 col-form-label">Period Of License:</label>
+                     <div class="col-sm-10">
+                     {{user.periodOfLicense}}
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <label for="tag" class="col-sm-2 col-form-label">Email:</label>
+                     <div class="col-sm-10">
+                     <input  [(ngModel)]="user.email" name="tag" type="text" class="form-control" id="tag" aria-describedby="emailHelp" placeholder="Enter email">
+                     </div>
+                 </div>
 
-                 login_to_faceboo
-                    <h6 style="color: darkred"> login_to_facebook_error </h6>
-                 endif
 
-                <br>
-                Ім'я користувача:  request.user.username  <br><br>
-                Термін дії ліцензії:  request.user.account.start_date_of_license   request.user.account.end_date_of_license <br><br>
-                <form action="." method="POST" class="padding">
-                    csrf_token
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                         user_form.email
-                    </div>
-
-                    <div class="form-group">
-                    formset.management_form
-                    formset.as_p
-                    </div>
-
+                <div class="modal-footer">
+                    <a href="" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <br><br>
-                </form>
-
-
-                <div id='twitter-div'>
-                    <h3>Twitter</h3>
-
-                    if twitter_login
-                        <p>Connected as <a href="https://twitter.com/twitter_login.extra_data.access_token.screen_name/" target="_blank">twitter_login.extra_data.access_token.screen_name</a></p>
-                        <form method="post" action=" url 'social:disconnect' 'twitter'">
-                            <button type="submit">Disconnect from Twitter</button>
-                        </form>
-                    else
-                        <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
-                    endif
                 </div>
-                <br>
-
-                <div id='facebook-div'>
-                    <h3>Facebook</h3>
-
-                     if facebook_login
-                    <p>Connected as <a href="https://facebook.com/facebook_login.extra_data.id/" target="_blank"> facebook_login.extra_data.id </a></p>
-                    <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
-                        <button type="submit">Disconnect from Facebook</button>
-                    </form>
-                        <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
-                </div>
-                <br>
 
             </div>
         </div>

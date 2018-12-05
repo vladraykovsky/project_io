@@ -28,24 +28,53 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr *ngFor="let connection of connections">
-                                  <td>{{connection.hashTag}}</td>
-                                  <td>{{connection.twitterLink}}</td>
-                                  <td>{{connection.facebookLink}}</td>
-                                  <td>{{connection.dayOfWeek}}</td>
-                                  <td>{{connection.typeOfReport}}</td>
-                                  <td>
-                                   <a  class="connection pr-2" data-toggle="modal">
+                            <tr *ngFor="let connection of connections;let i = index ">
+                                  <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{connection.hashTag}}</td>
+                                  <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{connection.twitterLink}}</td>
+                                  <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{connection.facebookLink}}</td>
+                                  <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{connection.dayOfWeek}}</td>
+                                  <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{connection.typeOfReport}}</td>
+                                  <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+                                   <a  class="connection pr-2" data-toggle="modal" (click)="basicModal.show()">
                                         <fa-icon [icon]="faTrashAlt"></fa-icon>
                                    </a>
                                     <a (click)="editConnection(connection, router)" class="connection" >
                                         <fa-icon [icon]="faPencilAlt"></fa-icon>
                                     </a>
                                    </td>
+
+                              <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                                               <div class="modal-dialog" role="document">
+                                                 <div class="modal-content">
+                                                   <div class="modal-header">
+                                                     <h4 class="modal-title w-100" id="myModalLabel">Do you want to remove connection?</h4>
+                                                   </div>
+                                                   <div class="modal-footer">
+                                                     <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="removeConnection(connection,basicModal)" mdbWavesEffect>OK</button>
+                                                     <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.hide()" mdbWavesEffect >Cancle</button>
+                                                   </div>
+                                                 </div>
+                                               </div>
+                              </div>
+
                             </tr>
 
                    </tbody>
+                   <tfoot class="grey lighten-5 w-100">
+
+                                               <tr>
+                                                 <td colspan="4">
+                                                   <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+                                                   </mdb-table-pagination>
+                                                 </td>
+                                               </tr>
+
+                                             </tfoot>
                 </table>
+
+
+
+
         </div>
   </div>
   <!--                   for connection in all_connections
