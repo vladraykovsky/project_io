@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddConnectionComponent implements OnInit {
 
-  connection = {id: 1, hashTag: 'tag', twitterLink: '--', facebookLink: '--', dayOfWeek: '--', typeOfReport: '--'};
+  connection = {id: 1, hashTag: 'tag', twitterLink: '--', facebookLink: '--', dayOfWeek: 'Saturday', typeOfReport: 'Simple'};
   constructor() { }
 
+  daysOfWeek = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
+  typeOfReport = [ 'Simple', 'Number', 'Full'];
   ngOnInit() {
   }
 

@@ -1,6 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 import {MdbTablePaginationComponent, MdbTableService} from 'angular-bootstrap-md';
 @Component({
@@ -14,6 +15,7 @@ export class ManageConnectionsComponent implements OnInit, AfterViewInit {
 
   faPencilAlt = faPencilAlt;
   faTrashAlt =  faTrashAlt;
+  faPlusCircle =  faPlusCircle;
   connections = [];
   previous: any = [];
   firstItemIndex;

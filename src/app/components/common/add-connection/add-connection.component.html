@@ -17,13 +17,8 @@
                                      <label for="dayOfWeek" class="col-sm-2 col-form-label">Day of Week</label>
                                      <div class="col-sm-10">
                                      <select class="form-control" id="dayOfWeek" [(ngModel)]="connection.dayOfWeek" name="dayOfWeek">
-                                       <!--    <option [ngValue]="Monday">Monday</option>
-                                           <option [ngValue]="Tuesday">Tuesday</option>
-                                           <option [ngValue]="Wednesday">Wednesday</option>
-                                           <option [ngValue]="Thursday">Thursday</option>
-                                           <option [ngValue]="Friday">Friday</option>
-                                           <option [ngValue]="Saturday">Saturday</option>
-                                           <option [ngValue]="Sunday">Sunday</option>   -->
+
+                                       <option *ngFor="let day of daysOfWeek" [ngValue]="day">{{day}}</option>
                                      </select>
                                      </div>
                                  </div>
@@ -31,16 +26,8 @@
                                      <label for="typeOfReport" class="col-sm-2 col-form-label">Type of report</label>
                                      <div class="col-sm-10">
                                      <select class="form-control" id="typeOfReport" [(ngModel)]="connection.typeOfReport" name="typeOfReport">
-                                    <!--      <option [ngValue]="Simple">Simple</option>
-                                          <option [ngValue]="Number">Number</option>
-                                          <option [ngValue]="Full">Full</option>  -->
+                                       <option *ngFor="let type of typeOfReport" [ngValue]="type">{{type}}</option>
                                      </select>
-                                     </div>
-                                 </div>
-                                 <div class="form-group row">
-                                     <label for="facebookLink" class="col-sm-2 col-form-label">Facebook link</label>
-                                     <div class="col-sm-10">
-                                     <input  [(ngModel)]="connection.facebookLink" name="facebookLink" type="text" class="form-control" id="facebookLink" aria-describedby="emailHelp" placeholder="Enter tag name">
                                      </div>
                                  </div>
                                  <div class="form-group row">

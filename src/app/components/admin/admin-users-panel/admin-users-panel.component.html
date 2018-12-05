@@ -1,0 +1,46 @@
+<div class="h-120 row align-items-center mr-0 ml-0">
+  <table class="table table-striped table-hover" id="connection_list_table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Disable user</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users;let i = index ">
+
+      <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">
+        <a [routerLink] ="[user.id]">{{user.username}} </a>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+      <a>{{user.email}}
+      </a>
+      </td>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+        <a>{{user.firstName}} </a>
+      </td>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+        <a>{{user.lastName}} </a>
+      </td>
+      <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+        <a class="bann-user" (click)="banUser(user)">
+        <fa-icon [icon]=" faBan"></fa-icon>
+        </a>
+      </td>
+
+    </tr>
+    </tbody>
+    <tfoot class="grey lighten-5 w-100">
+
+    <tr>
+      <td colspan="4">
+        <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+        </mdb-table-pagination>
+      </td>
+    </tr>
+
+    </tfoot>
+  </table>
+</div>

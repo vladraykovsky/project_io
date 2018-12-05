@@ -8,8 +8,8 @@
 					          </div>
                     <div class="col-sm-6">
 						              <a class="btn btn-success float-right" data-toggle="modal">
-                            <i class="material-icons">&#xE147;</i>
-                            <span (click)="basicModalDate.show()">Custom Date Range</span>
+                            <fa-icon [icon]="faPlusCircle"></fa-icon>
+                            <span (click)="basicModalDate.show()" class="ml-1">Custom Date Range</span>
                           </a>
 					          </div>
                 </div>
@@ -19,17 +19,20 @@
                  <div class="modal-dialog" role="document">
                  <div class="modal-content">
                  <div class="modal-header">
-                  <h4 class="modal-title w-100" id="myModalLabel">Create report with custom date range</h4>
-                       <div class="modal-body">
-                <div class="input-group date" data-provide="datepicker">
-                    <input class="datepicker" data-date-format="mm/dd/yyyy" type="date" class="form-control">
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
-
-                       </div>
+                  <h4 class="modal-title" id="myModalLabel">Create report with custom date range</h4>
                  </div>
+                   <div class="modal-body">
+
+                  <div class="d-block">
+                      <p>From</p>
+                      <input type="date"/>
+                      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                      <p>To</p>
+                      <input type="date"/>
+                      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                  </div>
+
+                   </div>
                  <div class="modal-footer">
                  <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModalDate.hide()" mdbWavesEffect>OK</button>
                  <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModalDate.hide()" mdbWavesEffect >Cancle</button>

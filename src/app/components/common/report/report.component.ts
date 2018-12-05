@@ -1,6 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faPlusCircle, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {MdbTablePaginationComponent, MdbTableService} from 'angular-bootstrap-md';
+import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ReportComponent implements OnInit,  AfterViewInit {
   public myDatePickerOptions = {
 // Your options
   };
+  faPlusCircle =  faPlusCircle;
 
   customDate = new Date();
   currentDate = new Date();
@@ -24,6 +26,9 @@ export class ReportComponent implements OnInit,  AfterViewInit {
 
   firstItemIndex;
   lastItemIndex;
+
+  model: NgbDateStruct;
+  date: {year: number, month: number};
 
   constructor(private tableService: MdbTableService,
   private cdRef: ChangeDetectorRef) {
