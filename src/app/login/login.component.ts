@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SecurityService} from '../services/security.service';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  user = {username: '', password: ''};
+  user = {login: '', password: ''};
 
-  constructor() { }
+  constructor(private securityService: SecurityService) { }
 
   ngOnInit() {
+  }
+
+  registerUser() {
+    this.securityService.postRegister(this.user).subscribe( obj => {
+      console.log(obj);
+    });
   }
 
 }

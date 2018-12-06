@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: '',
+  baseUrl: 'http://localhost:8080/',
   config: {
     apiKey: 'AIzaSyDDAPX6ms-GCmow8QtAnvtPulDTFNliGnA',
     authDomain: 'documents-reporter.firebaseapp.com',

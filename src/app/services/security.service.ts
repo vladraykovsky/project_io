@@ -20,7 +20,7 @@ export class SecurityService {
   }
 
   postRegister(user) {
-    return this.http.post(`${environment.baseUrl}register`, user);
+    return this.http.post(`${environment.baseUrl}public-api/register`, user);
   }
 
 }
