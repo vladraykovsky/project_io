@@ -7,27 +7,30 @@ import {environment} from '../../environments/environment';
 })
 export class UserServices {
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
   getCurrentUserInfo() {
-    return this.http.get(`${environment.baseUrl}account`);
+    return this.http.get(`${environment.baseUrl}private-api/account`);
+  }
+  updateCurrentUserInfo(currentUser) {
+    return this.http.put(`${environment.baseUrl}private-api/account`, currentUser);
   }
   getAllUsers() {
-    return this.http.get(`${environment.baseUrl}admin/users`);
+    return this.http.get(`${environment.baseUrl}admin-api`);
   }
   getUserById(userId) {
-    return this.http.get(`${environment.baseUrl}admin/users/${userId}`);
+    return this.http.get(`${environment.baseUrl}admin-api/${userId}`);
   }
 
   enableAdmin(userId, body) {
-    return this.http.post(`${environment.baseUrl}admin/users/${userId}`, body);
+    return this.http.post(`${environment.baseUrl}admin-api/${userId}`, body);
   }
 
   deleteUser(userId) {
-    return this.http.delete(`${environment.baseUrl}admin/users/${userId}`);
+    return this.http.delete(`${environment.baseUrl}admin-api/${userId}`);
   }
 
-  getBannedUsers(){
-    return this.http.get(`${environment.baseUrl}admin/users/banned`);
+  getBannedUsers(userId) {
+    return this.http.post(`${environment.baseUrl}admin-api/ban/${userId}`, {});
   }
 
 }

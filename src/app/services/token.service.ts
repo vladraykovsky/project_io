@@ -12,7 +12,11 @@ export class TokenService {
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
-    return true;
+    if (token !== undefined) {
+      return true;
+    } else {
+      return true;
+    }
   }
 
 }

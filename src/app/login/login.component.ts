@@ -15,9 +15,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  registerUser() {
-    this.securityService.postRegister(this.user).subscribe( obj => {
+  authorizeUser() {
+    this.securityService.postAuthorized(this.user).subscribe( obj => {
       console.log(obj);
+      localStorage.setItem('token', obj['token']);
     });
   }
 

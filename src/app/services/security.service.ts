@@ -16,7 +16,7 @@ export class SecurityService {
   }
 
   postAuthorized(user) {
-    return this.http.post(`${environment.baseUrl}authorize`, user);
+    return this.http.post(`${environment.baseUrl}public-api/authorize`, user);
   }
 
   postRegister(user) {

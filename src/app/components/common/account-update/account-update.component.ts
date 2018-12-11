@@ -17,7 +17,7 @@ export class AccountUpdateComponent implements OnInit {
   socialLogin(loginProvider) {
     this.afService.socialLogin(loginProvider)
       .then( data => {
-            console.log(data['credential']);
+            console.log(data);
         });
   }
 

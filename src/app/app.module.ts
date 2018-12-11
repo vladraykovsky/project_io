@@ -27,8 +27,10 @@ import { UserDetailsComponent } from './components/admin/user-details/user-detai
 import { AddUserComponent } from './components/admin/add-user/add-user.component';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from '../environments/environment';
-import {AngularFireModule} from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+// import {AngularFireModule} from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const appRoutes: Routes = [
   {path: '', component: ApplicationHeaderComponent, children: [
