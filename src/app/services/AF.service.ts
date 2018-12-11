@@ -1,11 +1,7 @@
 import {Injectable} from '@angular/core';
-// import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-
-import { AngularFireAuth } from '@angular/fire/auth';
-// import { auth } from 'firebase/app';
-import * as firebase from 'firebase';
-// import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
+import * as firebase from 'firebase/app';
 
 
 @Injectable({providedIn: 'root'})

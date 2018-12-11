@@ -25,12 +25,12 @@ import { AdminUsersPanelComponent } from './components/admin/admin-users-panel/a
 import { AdminUsersBanedPanelComponent } from './components/admin/admin-users-baned-panel/admin-users-baned-panel.component';
 import { UserDetailsComponent } from './components/admin/user-details/user-details.component';
 import { AddUserComponent } from './components/admin/add-user/add-user.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {environment} from '../environments/environment';
-// import {AngularFireModule} from 'angularfire2';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireModule} from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import {TokenInterceptor} from './interceptor/token.interceptor';
+
 
 const appRoutes: Routes = [
   {path: '', component: ApplicationHeaderComponent, children: [
@@ -87,6 +87,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes )
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
